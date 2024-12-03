@@ -53,7 +53,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/tlunews/views/admin/login.php">Đăng nhập</a>
+                        <a class="nav-link" href="../admin/login.php">Đăng nhập</a>
                     </li>
                 </ul>
             </div>
@@ -118,4 +118,3 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
