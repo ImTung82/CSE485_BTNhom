@@ -4,7 +4,11 @@
 
     $controller = $_GET['controller'] ?? 'index';
     $action = $_GET['action'] ?? 'index';
+<<<<<<< Updated upstream
 
+=======
+        
+>>>>>>> Stashed changes
     if ($controller != null && $action != null) {
         if ($controller === 'admin') {
             switch ($action) {
