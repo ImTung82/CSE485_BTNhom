@@ -16,7 +16,7 @@ require_once(__DIR__ . '/../../../models/News.php');
         <h3 class="text-center text-success mb-4">Add News</h3>
 
         <!-- Form để thêm tin tức -->
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="../../../../index.php?controller=admin&action=add" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" name="title" required>
@@ -27,11 +27,11 @@ require_once(__DIR__ . '/../../../models/News.php');
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
-                <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*">
             </div>
             <div class="mb-3">
                 <label for="dateCreated" class="form-label">Date Created</label>
-                <input type="date" class="form-control" id="dateCreated" name="dateCreated" required>
+                <input type="date" class="form-control" id="dateCreated" name="dateCreated">
             </div>
             <div class="mb-3">
                 <label for="categoryId" class="form-label">Category ID</label>

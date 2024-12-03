@@ -13,10 +13,12 @@
                     $admincontroller->index();
                     break; 
                 case 'login':
-                    $controller = new AdminController();
-                    $controller->login();
+                    $admincontroller = new AdminController();
+                    $admincontroller->login();
                     break;
-                // Các action khác...
+                case 'add':
+                    $admincontroller = new AdminController();
+                    $admincontroller->add();
                 default:
                     echo "Trang không tồn tại.";
                     break;
