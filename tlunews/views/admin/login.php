@@ -23,7 +23,7 @@
 
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Đăng nhập</button>
-                <a href="index.php?action=index" class="btn btn-secondary ms-2">Quay lại</a>
+                <a href="../../index.php?action=index" class="btn btn-secondary ms-2">Quay lại</a>
             </div>
         </form>
     </div> 

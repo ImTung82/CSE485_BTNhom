@@ -4,6 +4,10 @@
     $action = $_GET['action'] ?? 'index';
 
     switch ($action) {
+        case 'index':
+            $controller = new AdminController();
+            $controller->index();
+            break; 
         case 'login':
             $controller = new AdminController();
             $controller->login();

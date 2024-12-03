@@ -2,6 +2,9 @@
     require_once(__DIR__ . '/../models/User.php');
 
     class AdminController {
+        public function index() {
+            header("Location: views/home/index.php");
+        }
         public function login() {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $username = $_POST['username'] ?? '';
@@ -18,11 +21,11 @@
                         exit();
                     }
                 } else {
-                    include __DIR__ . '/../views/admin/login.php';
+                    header("Location: views/admin/login.php");
                 }
             } else {
                 // Nếu là GET, hiển thị trang login
-                include __DIR__ . '/../views/admin/login.php';
+                header("Location: views/admin/login.php");
             }
         }
     }
