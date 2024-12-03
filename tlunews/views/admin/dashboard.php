@@ -1,3 +1,10 @@
+<?php
+    require_once(__DIR__ . '/../../models/News.php');
+
+    $news = new News();
+    $allNews = $news->getAllNews();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,26 +31,29 @@
                 </tr>
             </thead>
             <tbody>
-            <!-- <?php
-                foreach ($products as $product) {
+            <?php
+                foreach ($allNews as $news) {
             ?>
                     <tr>
-                        <th scope="row"><?= $product->getName(); ?></th>
-                        <td><?= $product->getPrice(); ?></td>
+                        <th scope="row"><?= $news['title']; ?></th>
+                        <td><?= $news['content']; ?></td>
+                        <td><?= $news['image']; ?></td>
+                        <td><?= $news['created_at']; ?></td>
+                        <td><?= $news['category_id']; ?></td>
                         <td>
-                            <a href="?action=edit&id=<?= $product->getId(); ?>">
+                            <a href="?action=edit&id=<?= $news['id'] ?>">
                                 <i class="bi bi-pencil-square"></i>
                             </a>
                         </td>
                         <td>
-                            <a href="?action=delete&id=<?= $product->getId(); ?>">
+                            <a href="?action=delete&id=<?= $news['id'] ?>">
                                 <i class="bi bi-trash3"></i>
                             </a>
                         </td>
                     </tr>
             <?php
                 }
-            ?> -->
+            ?>
             </tbody>
         </table>
     </div>
