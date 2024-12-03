@@ -61,5 +61,26 @@
             }
         }
 
+<<<<<<< Updated upstream
+=======
+        public function deleteNews($id) {
+            $dbConnection = new DBConnection();
+            $conn = $dbConnection->getConnection();
+        
+            if ($conn === null) {
+                throw new Exception("Kết nối cơ sở dữ liệu thất bại.");
+            }
+        
+            try {
+                $sql = "DELETE FROM news WHERE id = :id";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+                $stmt->execute();
+            } catch (PDOException $e) {
+                throw new Exception("Lỗi khi xóa bản ghi: " . $e->getMessage());
+            }
+        }
+        
+>>>>>>> Stashed changes
     }
 ?>

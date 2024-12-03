@@ -16,7 +16,11 @@ require_once(__DIR__ . '/../../../models/News.php');
         <h3 class="text-center text-success mb-4">Add News</h3>
 
         <!-- Form để thêm tin tức -->
+<<<<<<< Updated upstream
         <form action="" method="POST" enctype="multipart/form-data">
+=======
+        <form action="../../../index.php?controller=admin&action=add" method="POST" enctype="multipart/form-data">
+>>>>>>> Stashed changes
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" name="title" required>
