@@ -10,15 +10,15 @@
     <div class="container mt-5">
         <h2 class="mb-4 fw-bold">Đăng nhập</h2>
         
-        <form action="index.php?action=add" method="POST">
+        <form action="../../index.php?action=login" method="POST">
             <div class="mb-3">
-                <label for="name" class="form-label fw-semibold">Tài khoản:</label>
-                <input type="text" id="name" name="name" class="form-control" required>
+                <label for="username" class="form-label fw-semibold">Tài khoản:</label>
+                <input type="text" id="username" name="username" class="form-control" required>
             </div>
 
             <div class="mb-3">
-                <label for="price" class="form-label fw-semibold">Mật khẩu:</label>
-                <input type="text" id="price" name="price" class="form-control" required>
+                <label for="password" class="form-label fw-semibold">Mật khẩu:</label>
+                <input type="text" id="password" name="password" class="form-control" required>
             </div>
 
             <div class="mb-3">
@@ -26,7 +26,7 @@
                 <a href="index.php?action=index" class="btn btn-secondary ms-2">Quay lại</a>
             </div>
         </form>
-    </div>  
+    </div> 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
