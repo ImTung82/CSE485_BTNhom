@@ -44,5 +44,22 @@
                 throw new Exception("Lỗi khi truy vấn cơ sở dữ liệu: " . $e->getMessage());
             }
         }
+
+      
+      
+        public function deleteNewsById($id) {
+            try {
+                $sql = "DELETE FROM news WHERE id = :id";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+                $stmt->execute();
+    
+                return $stmt->rowCount() > 0;
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+                return false;
+            }
+        }
+
     }
 ?>

@@ -17,7 +17,10 @@
 <body>
     <div class="container">
         <h3 class="text-center text-success my-3 fw-bold">Dashboard</h3>
-        <a href="?action=add" class="btn btn-success my-3">Thêm mới</a>
+
+        <a href="news/add.php" class="btn btn-success my-3">Thêm mới</a>
+
+
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -46,7 +49,10 @@
                             </a>
                         </td>
                         <td>
-                            <a href="?action=delete&id=<?= $news['id'] ?>">
+
+                            <a href="../../../controllers/NewsController.php?action=delete&id=<?php echo $news['id']; ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
+
+
                                 <i class="bi bi-trash3"></i>
                             </a>
                         </td>
