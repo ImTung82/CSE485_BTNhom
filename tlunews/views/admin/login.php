@@ -10,7 +10,7 @@
     <div class="container mt-5">
         <h2 class="mb-4 fw-bold">Đăng nhập</h2>
         
-        <form action="../../index.php?action=login" method="POST">
+        <form action="../../index.php?controller=admin&action=login" method="POST">
             <div class="mb-3">
                 <label for="username" class="form-label fw-semibold">Tài khoản:</label>
                 <input type="text" id="username" name="username" class="form-control" required>
@@ -23,7 +23,7 @@
 
             <div class="mb-3">
                 <button type="submit" class="btn btn-success">Đăng nhập</button>
-                <a href="../../index.php?action=index" class="btn btn-secondary ms-2">Quay lại</a>
+                <a href="../../index.php?controller=admin&action=index" class="btn btn-secondary ms-2">Quay lại</a>
             </div>
         </form>
     </div> 
