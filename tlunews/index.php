@@ -1,9 +1,10 @@
 <?php
     require_once __DIR__ . '/controllers/AdminController.php';
+    require_once __DIR__ . '/controllers/NewsController.php';
 
+    $controller = $_GET['controller'] ?? 'index';
     $action = $_GET['action'] ?? 'index';
 
-<<<<<<< Updated upstream
     switch ($action) {
         case 'index':
             $controller = new AdminController();
@@ -17,7 +18,7 @@
         default:
             echo "Trang không tồn tại.";
             break;
-=======
+        
     if ($controller != null && $action != null) {
         if ($controller === 'admin') {
             switch ($action) {
@@ -32,15 +33,16 @@
                 case 'add':
                     $admincontroller = new AdminController();
                     $admincontroller->add();
+
                 case 'delete':
                     $admincontroller = new AdminController();
                     $admincontroller->delete();
                     break;
+
                 default:
                     echo "Trang không tồn tại.";
                     break;
             }
         }
->>>>>>> Stashed changes
     }
 ?>

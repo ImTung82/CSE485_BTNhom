@@ -1,5 +1,6 @@
 <?php
     require_once(__DIR__ . '/../models/User.php');
+    require_once(__DIR__ . '/../models/News.php');
 
     class AdminController {
         public function index() {
@@ -28,8 +29,6 @@
                 header("Location: views/admin/login.php");
             }
         }
-<<<<<<< Updated upstream
-=======
 
         public function add() {
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -61,7 +60,6 @@
             }
             echo "Yêu cầu không hợp lệ.";
         }
->>>>>>> Stashed changes
     }
     
 ?>

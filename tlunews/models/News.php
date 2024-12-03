@@ -45,24 +45,46 @@
             }
         }
 
-      
-      
-        public function deleteNewsById($id) {
+        public function addNews($title, $content, $image, $created_date, $category_id) {
+            $dbConnection = new DBConnection();
+            $conn = $dbConnection->getConnection();
+
+            if ($conn === null) {
+                throw new Exception("Kết nối cơ sở dữ liệu thất bại.");
+            }
+
             try {
-                $sql = "DELETE FROM news WHERE id = :id";
-                $stmt = $this->db->prepare($sql);
-                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+                $sql = "INSERT INTO news (title, content, image, created_at, category_id) VALUES (:title, :content, :image, :created_at, :category_id)";
+                $stmt = $conn->prepare($sql);
+                
+                $stmt->bindParam(':title', $title);
+                $stmt->bindParam(':content', $content);
+                $stmt->bindParam(':image', $image);
+
+                if ($image === '') {
+                    $stmt->bindValue(':image', null, PDO::PARAM_NULL);
+                } else {
+                    $stmt->bindParam(':image', $image);
+                }
+
+                if ($created_date === '') {
+                    $stmt->bindValue(':created_at', null, PDO::PARAM_NULL);
+                } else {
+                    $stmt->bindParam(':created_at', $created_date);
+                }
+
+                if ($category_id === null) {
+                    $stmt->bindValue(':category_id', null, PDO::PARAM_NULL);
+                } else {
+                    $stmt->bindParam(':category_id', $category_id);
+                }
+
                 $stmt->execute();
-    
-                return $stmt->rowCount() > 0;
             } catch (PDOException $e) {
-                echo "Error: " . $e->getMessage();
-                return false;
+                throw new Exception("Lỗi khi thêm sản phẩm: " . $e->getMessage());
             }
         }
 
-<<<<<<< Updated upstream
-=======
         public function deleteNews($id) {
             $dbConnection = new DBConnection();
             $conn = $dbConnection->getConnection();
@@ -80,7 +102,5 @@
                 throw new Exception("Lỗi khi xóa bản ghi: " . $e->getMessage());
             }
         }
-        
->>>>>>> Stashed changes
     }
 ?>
