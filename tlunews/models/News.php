@@ -45,8 +45,8 @@
             }
         }
 
-        
-
+      
+      
         public function deleteNewsById($id) {
             try {
                 $sql = "DELETE FROM news WHERE id = :id";

@@ -2,8 +2,9 @@
     require_once __DIR__ . '/../models/News.php';
 
     class NewsController {
-
-
+      
+      
+      
         //Xóa 
         if (isset($_GET['action']) && $_GET['action'] == 'delete') {
             if (isset($_GET['id'])) {
@@ -28,6 +29,5 @@
                 exit;
             }
         }
-
     }
 ?>
