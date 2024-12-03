@@ -4,11 +4,7 @@
 
     $controller = $_GET['controller'] ?? 'index';
     $action = $_GET['action'] ?? 'index';
-<<<<<<< Updated upstream
 
-=======
-        
->>>>>>> Stashed changes
     if ($controller != null && $action != null) {
         if ($controller === 'admin') {
             switch ($action) {
@@ -23,6 +19,12 @@
                 case 'add':
                     $admincontroller = new AdminController();
                     $admincontroller->add();
+
+                case 'delete':
+                    $admincontroller = new AdminController();
+                    $admincontroller->delete();
+                    break;
+
                 default:
                     echo "Trang không tồn tại.";
                     break;

@@ -47,5 +47,19 @@
             
             include __DIR__ . '/views/admin/news/add.php';
         }
+
+        public function delete() {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
+                $id = $_GET['id'];
+        
+                $news = new News();
+                $news->deleteNews($id);
+        
+                header("Location: views/admin/dashboard.php");
+                exit();
+            }
+            echo "Yêu cầu không hợp lệ.";
+        }
     }
+    
 ?>
