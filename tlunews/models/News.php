@@ -22,5 +22,27 @@
                 throw new Exception("Lỗi khi truy vấn cơ sở dữ liệu: " . $e->getMessage());
             }
         }
+
+        public function getNewsById($id) {
+            $dbConnection = new DBConnection();
+            $conn = $dbConnection->getConnection();
+    
+            if ($conn === null) {
+                throw new Exception("Kết nối cơ sở dữ liệu thất bại.");
+            }
+    
+            try {
+                // Truy vấn thông tin tin tức theo ID
+                $sql = "SELECT id, title, content, image, created_at, category_id FROM news WHERE id = :id";
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+                $stmt->execute();
+    
+                // Lấy dữ liệu tin tức và trả về
+                return $stmt->fetch(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                throw new Exception("Lỗi khi truy vấn cơ sở dữ liệu: " . $e->getMessage());
+            }
+        }
     }
 ?>
