@@ -1,5 +1,6 @@
 <?php
     require_once(__DIR__ . '/../models/User.php');
+    require_once(__DIR__ . '/../models/News.php');
 
     class AdminController {
         public function index() {
@@ -27,6 +28,24 @@
                 // Nếu là GET, hiển thị trang login
                 header("Location: views/admin/login.php");
             }
+        }
+
+        public function add() {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $title = $_POST['title'];
+                $content = $_POST['content'];
+                $image = $_POST['image'] ?? '';
+                $dateCreated = $_POST['dateCreated'] ?? '';
+                $categoryId = $_POST['categoryId'] ?? '';
+
+                $news = new News();
+                $news->addNews($title, $content, $image, $dateCreated, $categoryId);
+
+                header("Location: views/admin/dashboard.php");
+                exit();
+            }
+            
+            include __DIR__ . '/views/admin/news/add.php';
         }
     }
 ?>
