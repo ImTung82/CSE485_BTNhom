@@ -1,3 +1,10 @@
+<?php
+    require_once(__DIR__ . '/../../models/News.php');
+
+    $news = new News();
+    $allNews = $news->getAllNews();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,15 +87,15 @@
     <section class="container mt-5">
         <h2 class="text-center mb-4">Tin tức mới nhất</h2>
         <div class="row">
-            <?php if (!empty($news)): ?>
-                <?php foreach ($news as $item): ?>
+            <?php if (!empty($allNews)): ?>
+                <?php foreach ($allNews as $item): ?>
                     <div class="col-md-4 mb-4">
                         <div class="card shadow-sm border-light">
                             <img src="<?= $item['image'] ?>" class="card-img-top" alt="Hình ảnh tin tức">
                             <div class="card-body">
                                 <h5 class="card-title"><?= $item['title'] ?></h5>
                                 <p class="card-text"><?= substr($item['content'], 0, 100) ?>...</p>
-                                <a href="index.php?controller=news&action=detail&id=<?= $item['id'] ?>" class="btn btn-primary">Xem chi tiết</a>
+                                <a href="../news/detail.php?id=<?= $item['id'] ?>" class="btn btn-primary">Xem chi tiết</a>
                             </div>
                         </div>
                     </div>
