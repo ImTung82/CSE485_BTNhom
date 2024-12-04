@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once(__DIR__ . '/../../models/News.php');
 
     $news = new News();
@@ -49,7 +50,6 @@
     </style>
 </head>
 <body>
-
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -59,9 +59,20 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../admin/login.php">Đăng nhập</a>
-                    </li>
+                    <?php if (isset($_SESSION['username'])): ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Xin chào, <strong><?= $_SESSION['username'] ?></strong>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="userMenu">
+                                <li><a class="dropdown-item" href="../admin/logout.php">Đăng xuất</a></li>
+                            </ul>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../admin/login.php">Đăng nhập</a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
