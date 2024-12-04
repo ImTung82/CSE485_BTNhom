@@ -11,16 +11,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi tiết tin tức</title>
+    <title><?= $newsDetails['title']; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f8f9fa;
-        }
-        .navbar {
-            margin-bottom: 30px;
         }
         .card-img-top {
             height: 300px;
@@ -31,14 +28,16 @@
             color: #fff;
             padding: 20px 0;
             text-align: center;
+            margin-top: 50px;
         }
     </style>
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="index.php">Trang chủ</a>
+            <a class="navbar-brand" href="../home/index.php">Trang chủ</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
