@@ -26,10 +26,10 @@
                     <?php if (isset($_SESSION['username'])): ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="userMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?= $_SESSION['username'] ?>
+                                <strong><?= $_SESSION['username'] ?></strong>
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="userMenu">
-                                <li><a class="dropdown-item" href="../admin/logout.php">Đăng xuất</a></li>
+                                <li><a class="dropdown-item" href="../logout.php">Đăng xuất</a></li>
                             </ul>
                         </li>
                     <?php else: ?>
