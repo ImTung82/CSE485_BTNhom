@@ -19,17 +19,11 @@
                 case 'add':
                     $admincontroller = new AdminController();
                     $admincontroller->add();
-<<<<<<< Updated upstream
 
                 case 'edit':
                     $admincontroller = new AdminController();
                     $admincontroller->edit();
-
-=======
-                case 'update':
-                    $admincontroller = new AdminController();
-                    $admincontroller->update();
->>>>>>> Stashed changes
+                
                 case 'delete':
                     $admincontroller = new AdminController();
                     $admincontroller->delete();
