@@ -19,9 +19,11 @@
                 case 'add':
                     $admincontroller = new AdminController();
                     $admincontroller->add();
+
                 case 'edit':
                     $admincontroller = new AdminController();
                     $admincontroller->edit();
+
                 case 'delete':
                     $admincontroller = new AdminController();
                     $admincontroller->delete();

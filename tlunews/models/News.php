@@ -40,7 +40,6 @@
     
                 // Lấy dữ liệu tin tức và trả về
                 return $stmt->fetch(PDO::FETCH_ASSOC);
-            
             } catch (PDOException $e) {
                 throw new Exception("Lỗi khi truy vấn cơ sở dữ liệu: " . $e->getMessage());
             }
@@ -103,7 +102,5 @@
                 throw new Exception("Lỗi khi xóa bản ghi: " . $e->getMessage());
             }
         }
-
-        
     }
 ?>
