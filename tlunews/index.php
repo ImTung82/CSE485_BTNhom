@@ -6,33 +6,39 @@
     $action = $_GET['action'] ?? 'index';
 
     if ($controller != null && $action != null) {
-        if ($controller === 'admin') {
-            switch ($action) {
-                case 'index':
-                    $admincontroller = new AdminController();
-                    $admincontroller->index();
-                    break; 
-                case 'login':
-                    $admincontroller = new AdminController();
-                    $admincontroller->login();
-                    break;
-                case 'add':
-                    $admincontroller = new AdminController();
-                    $admincontroller->add();
+        switch ($controller) {
+            case 'admin':
+                switch ($action) {
+                    case 'index':
+                        $adminController = new AdminController();
+                        $adminController->index();
+                        break; 
+                    case 'login':
+                        $adminController = new AdminController();
+                        $adminController->login();
+                        break;
+                }
 
-                case 'update':
-                    $admincontroller = new AdminController();
-                    $admincontroller->update();
-                
-                case 'delete':
-                    $admincontroller = new AdminController();
-                    $admincontroller->delete();
-                    break;
+            case 'news':
+                switch ($action) {
+                    case 'add':
+                        $newsController = new NewsController();
+                        $newsController->add();
 
-                default:
-                    echo "Trang không tồn tại.";
-                    break;
-            }
+                    case 'update':
+                        $newsController = new NewsController();
+                        $newsController->update();
+                    
+                    case 'delete':
+                        $newsController = new NewsController();
+                        $newsController->delete();
+                        break;
+                }
+            
+            default:
+                $adminController = new AdminController();
+                $adminController->index();
+                break;
         }
     }
 ?>
