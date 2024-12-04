@@ -20,9 +20,9 @@
                     $admincontroller = new AdminController();
                     $admincontroller->add();
 
-                case 'edit':
+                case 'update':
                     $admincontroller = new AdminController();
-                    $admincontroller->edit();
+                    $admincontroller->update();
                 
                 case 'delete':
                     $admincontroller = new AdminController();

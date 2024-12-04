@@ -20,7 +20,6 @@
 
         <a href="news/add.php" class="btn btn-success my-3">Thêm mới</a>
 
-
         <table class="table table-striped">
             <thead>
                 <tr>

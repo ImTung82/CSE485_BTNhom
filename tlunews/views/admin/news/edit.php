@@ -1,17 +1,9 @@
-<<<<<<< Updated upstream
 <?php 
     require_once __DIR__ . '/../../../controllers/AdminController.php';
 
     $admincontroller = new AdminController();
     $newsItem = $admincontroller->getEditNews();
-=======
-<?php
-    require_once __DIR__ . '/../../../controllers/AdminController.php';
-    $admincontroller = new AdminController();
-    $newsItem = $admincontroller->edit();
->>>>>>> Stashed changes
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
