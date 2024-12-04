@@ -43,7 +43,7 @@
     </nav>
 
     <div class="container">
-        <h3 class="text-center text-success mb-4">Edit News</h3>
+        <h3 class="text-center text-success mb-4">Sửa tin tức</h3>
 
         <!-- Form chỉnh sửa tin tức -->
         <form action="../../../index.php?controller=news&action=update&id=<?= $newsItem['id']; ?>" method="POST" enctype="multipart/form-data">
@@ -59,16 +59,20 @@
                 <label for="image" class="form-label">Image</label>
                 <input type="file" class="form-control" id="image" name="image" accept="image/*">
             </div>
+            <?php
+                // Cắt phần thời gian khỏi trường created_at để chỉ lấy ngày
+                $createdAtDate = date('Y-m-d', strtotime($newsItem['created_at']));
+            ?>
             <div class="mb-3">
                 <label for="dateCreated" class="form-label">Date Created</label>
-                <input type="date" class="form-control" id="dateCreated" name="dateCreated" value="<?= $newsItem['created_at']; ?>">
+                <input type="date" class="form-control" id="dateCreated" name="dateCreated" value="<?= $createdAtDate; ?>">
             </div>
             <div class="mb-3">
                 <label for="categoryId" class="form-label">Category ID</label>
                 <input type="number" class="form-control" id="categoryId" name="categoryId" value="<?= $newsItem['category_id']; ?>" required>
             </div>
-            <button type="submit" class="btn btn-success">Update News</button>
-            <a href="../dashboard.php" class="btn btn-danger">Cancel</a>
+            <button type="submit" class="btn btn-success">Sửa tin tức</button>
+            <a href="../dashboard.php" class="btn btn-danger">Hủy</a>
         </form>
     </div>
 

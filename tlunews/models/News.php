@@ -11,7 +11,7 @@
             }
 
             try {
-                $sql = "SELECT id, title, content, image, created_at, category_id FROM news";
+                $sql = "SELECT id, title, content, image, DATE(created_at) AS created_at, category_id FROM news";
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
 
@@ -30,7 +30,7 @@
             }
     
             try {
-                $sql = "SELECT id, title, content, image, created_at, category_id FROM news WHERE id = :id";
+                $sql = "SELECT id, title, content, image, DATE(created_at) AS created_at, category_id FROM news WHERE id = :id";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
                 $stmt->execute();
@@ -81,7 +81,6 @@
             }
         }
 
-
         public function updateNews($id, $title, $content, $dateCreated, $categoryId, $image = null) {
             $dbConnection = new DBConnection();
             $conn = $dbConnection->getConnection();
@@ -107,7 +106,6 @@
                 return false;
             }
         }
-        
 
         public function deleteNews($id) {
             $dbConnection = new DBConnection();
@@ -124,6 +122,29 @@
                 $stmt->execute();
             } catch (PDOException $e) {
                 throw new Exception("Lỗi khi xóa bản ghi: " . $e->getMessage());
+            }
+        }
+
+        public function searchNews($query) {
+            $dbConnection = new DBConnection();
+            $conn = $dbConnection->getConnection();
+        
+            if ($conn === null) {
+                throw new Exception("Kết nối cơ sở dữ liệu thất bại.");
+            }
+        
+            try {
+                $sql = "SELECT id, title, content, image, created_at, category_id 
+                        FROM news 
+                        WHERE title LIKE :query OR content LIKE :query";
+                $stmt = $conn->prepare($sql);
+                $searchQuery = '%' . $query . '%';
+                $stmt->bindParam(':query', $searchQuery, PDO::PARAM_STR);
+                $stmt->execute();
+        
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                throw new Exception("Lỗi khi tìm kiếm dữ liệu: " . $e->getMessage());
             }
         }
     }

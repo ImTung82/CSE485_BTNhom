@@ -15,8 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
-    <body>
-
+<body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="dashboard.php">Dashboard</a>
@@ -64,17 +63,17 @@
                 foreach ($allNews as $news) {
             ?>
                     <tr>
-                        <th scope="row"><?= $news['title']; ?></th>
-                        <td><?= $news['content']; ?></td>
-                        <td><?= $news['image']; ?></td>
-                        <td><?= $news['created_at']; ?></td>
-                        <td><?= $news['category_id']; ?></td>
-                        <td>
+                        <th class="align-middle"><?= $news['title']; ?></th>
+                        <td class="align-middle"><?= $news['content']; ?></td>
+                        <td class="align-middle"><img src="../../<?= $news['image']; ?>" alt="<?= $news['title']; ?>" style="width: 100px; height: auto;"></td>
+                        <td class="align-middle"><?= $news['created_at']; ?></td>
+                        <td class="align-middle"><?= $news['category_id']; ?></td>
+                        <td class="align-middle">
                             <a href="news/edit.php?id=<?= $news['id'] ?>">
                                 <i class="bi bi-pencil-square"></i>
                             </a>
                         </td>
-                        <td>
+                        <td class="align-middle">
                             <a href="../../index.php?controller=news&action=delete&id=<?= $news['id']; ?>" 
                                 onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
                                 <i class="bi bi-trash3"></i>

@@ -41,7 +41,7 @@
     </nav>
 
     <div class="container">
-        <h3 class="text-center text-success mb-4">Add News</h3>
+        <h3 class="text-center text-success mb-4">Thêm tin tức</h3>
 
         <!-- Form để thêm tin tức -->
         <form action="../../../index.php?controller=news&action=add" method="POST" enctype="multipart/form-data">
@@ -55,18 +55,18 @@
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
-                <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
             </div>
             <div class="mb-3">
                 <label for="dateCreated" class="form-label">Date Created</label>
-                <input type="date" class="form-control" id="dateCreated" name="dateCreated">
+                <input type="date" class="form-control" id="dateCreated" name="dateCreated" required>
             </div>
             <div class="mb-3">
                 <label for="categoryId" class="form-label">Category ID</label>
                 <input type="number" class="form-control" id="categoryId" name="categoryId" required>
             </div>
-            <button type="submit" class="btn btn-success">Add News</button>
-            <a href="../dashboard.php" class="btn btn-danger">Cancel</a>
+            <button type="submit" class="btn btn-success">Thêm tin tức</button>
+            <a href="../dashboard.php" class="btn btn-danger">Hủy</a>
         </form>
     </div>
 

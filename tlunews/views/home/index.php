@@ -19,9 +19,6 @@
             font-family: 'Roboto', sans-serif;
             background-color: #f8f9fa;
         }
-        .navbar {
-            margin-bottom: 30px;
-        }
         .card-img-top {
             height: 200px;
             object-fit: cover;
@@ -81,10 +78,10 @@
     <!-- Hero Section -->
     <section class="hero bg-primary text-white py-5">
         <div class="container text-center">
-            <h1 class="display-4">Chào mừng đến với Trang Tin tức</h1>
+            <h1 class="display-4 fw-medium">Chào mừng đến với Trang Tin tức</h1>
             <p class="lead">Cập nhật tin tức mới nhất từ khắp nơi trên thế giới.</p>
             <div class="search-bar mt-4">
-                <form action="index.php?controller=home&action=search" method="GET">
+                <form action="../../../index.php?controller=home&action=search" method="POST">
                     <div class="input-group mx-auto" style="max-width: 600px;">
                         <input type="text" class="form-control" placeholder="Tìm kiếm tin tức..." name="query">
                         <button class="btn btn-light" type="submit">Tìm</button>
@@ -102,7 +99,7 @@
                 <?php foreach ($allNews as $item): ?>
                     <div class="col-md-4 mb-4">
                         <div class="card shadow-sm border-light">
-                            <img src="<?= $item['image'] ?>" class="card-img-top" alt="Hình ảnh tin tức">
+                            <img src="../../<?= $item['image']; ?>" alt="<?= $item['title']; ?>" style="width: 100px; height: auto;">
                             <div class="card-body">
                                 <h5 class="card-title"><?= $item['title'] ?></h5>
                                 <p class="card-text"><?= substr($item['content'], 0, 100) ?>...</p>
@@ -115,23 +112,11 @@
                 <p class="col-12">Không có tin tức nào!</p>
             <?php endif; ?>
         </div>
-
-        <!-- Phân trang -->
-        <div class="d-flex justify-content-center mt-4">
-            <ul class="pagination">
-                <!-- Giả sử số trang là 5 -->
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-            </ul>
-        </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2024 Trang Tin tức | Designed by Bạn</p>
+    <footer class="footer d-flex align-items-center justify-content-center">
+        <p class="m-0">&copy; 2024 Trang Tin tức | Designed by 64KTPM2 - Nhóm 9</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>

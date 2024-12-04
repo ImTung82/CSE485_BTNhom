@@ -1,9 +1,12 @@
 <?php
     session_start();
-    require_once(__DIR__ . '/../../controllers/HomeController.php');
-    
-    $homeController = new HomeController();
-    $newsDetails = $homeController->getDetails()
+    if (isset($_GET['query'])) {
+        $query = $_GET['query'];
+
+        require_once(__DIR__ . '/../../models/News.php');
+        $news = new News();
+        $searchResults = $news->searchNews($query);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -11,28 +14,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $newsDetails['title']; ?></title>
+    <title>Kết quả tìm kiếm</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f8f9fa;
-        }
-        .card-img-top {
-            height: 300px;
-            object-fit: cover;
-        }
         .footer {
             background-color: #343a40;
             color: #fff;
             padding: 20px 0;
             text-align: center;
-            margin-top: 50px;
         }
     </style>
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -61,24 +53,28 @@
         </div>
     </nav>
 
-    <!-- Chi tiết tin tức -->
     <section class="container mt-5">
-        <h2 class="text-center mb-4"><?= $newsDetails['title']; ?></h2>
+        <h2 class="text-center mb-4">Kết quả tìm kiếm</h2>
         <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <div class="card shadow-sm">
-                    <img src="../../<?= $newsDetails['image']; ?>" alt="<?= $newsDetails['title']; ?>" style="width: 100px; height: auto;">
-                    <div class="card-body">
-                        <p class="card-text"><?= $newsDetails['content']; ?></p>
-                        <p class="text-muted">Ngày đăng: <?= $newsDetails['created_at']; ?></p>
-                        <p class="text-muted">Danh mục ID: <?= $newsDetails['category_id']; ?></p>
+            <?php if (!empty($searchResults)): ?>
+                <?php foreach ($searchResults as $item): ?>
+                    <div class="col-md-4 mb-4">
+                        <div class="card shadow-sm border-light">
+                            <img src="../../<?= $item['image']; ?>" alt="<?= $item['title']; ?>" style="width: 100px; height: auto;">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $item['title'] ?></h5>
+                                <p class="card-text"><?= substr($item['content'], 0, 100) ?>...</p>
+                                <a href="../news/detail.php?id=<?= $item['id'] ?>" class="btn btn-primary">Xem chi tiết</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p class="col-12 text-center">Không tìm thấy kết quả nào!</p>
+            <?php endif; ?>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer d-flex align-items-center justify-content-center">
         <p class="m-0">&copy; 2024 Trang Tin tức | Designed by 64KTPM2 - Nhóm 9</p>
     </footer>
