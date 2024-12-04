@@ -1,8 +1,15 @@
+<<<<<<< Updated upstream
 <?php 
     require_once __DIR__ . '/../../../controllers/AdminController.php';
 
     $admincontroller = new AdminController();
     $newsItem = $admincontroller->getEditNews();
+=======
+<?php
+    require_once __DIR__ . '/../../../controllers/AdminController.php';
+    $admincontroller = new AdminController();
+    $newsItem = $admincontroller->edit();
+>>>>>>> Stashed changes
 ?>
 
 
@@ -19,11 +26,11 @@
         <h3 class="text-center text-success mb-4">Edit News</h3>
 
         <!-- Form chỉnh sửa tin tức -->
-        <form action="../../../index.php?controller=admin&action=edit&id=<?= $newsItem['id']; ?>" method="POST" enctype="multipart/form-data">
+        <form action="../../../index.php?controller=admin&action=update&id=<?= $newsItem['id']; ?>" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" name="title" value="<?= $newsItem['title']; ?>" required>
-            </div>
+            </div>      
             <div class="mb-3">
                 <label for="content" class="form-label">Content</label>
                 <textarea class="form-control" id="content" name="content" rows="4" required><?= $newsItem['content']; ?></textarea>

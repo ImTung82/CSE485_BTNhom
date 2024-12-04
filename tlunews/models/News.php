@@ -85,6 +85,35 @@
             }
         }
 
+
+        public function updateNews($id, $title, $content, $dateCreated, $categoryId, $image = null) {
+            $dbConnection = new DBConnection();
+            $conn = $dbConnection->getConnection();
+            if ($conn === null) {
+                throw new Exception("Kết nối cơ sở dữ liệu thất bại.");
+            }
+        
+            // Cập nhật câu lệnh SQL
+            $sql = "UPDATE news SET title = ?, content = ?, created_at = ?, category_id = ?" . 
+                   ($image ? ", image = ?" : "") . " WHERE id = ?";
+            
+            
+            $params = [$title, $content, $dateCreated, $categoryId];
+            if ($image) {
+                $params[] = $image; 
+            }
+            $params[] = $id; 
+        
+            
+            $stmt = $conn->prepare($sql);
+            if ($stmt->execute($params)) {
+                return true; 
+            } else {
+                return false;
+            }
+        }
+        
+
         public function deleteNews($id) {
             $dbConnection = new DBConnection();
             $conn = $dbConnection->getConnection();
