@@ -47,6 +47,18 @@
             
             include __DIR__ . '/views/admin/news/add.php';
         }
+          
+        public function edit() {
+            if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
+                $id = $_GET['id'];
+                $news = new News();
+                $newsEdit = $news-> getNewsById($id);
+
+                include __DIR__ . '/views/admin/news/edit.php';
+            }
+
+
+        }
 
         public function delete() {
             if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
@@ -60,6 +72,8 @@
             }
             echo "Yêu cầu không hợp lệ.";
         }
+
+
     }
     
 ?>

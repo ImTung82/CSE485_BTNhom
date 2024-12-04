@@ -44,7 +44,7 @@
                         <td><?= $news['created_at']; ?></td>
                         <td><?= $news['category_id']; ?></td>
                         <td>
-                            <a href="?action=edit&id=<?= $news['id'] ?>">
+                            <a href="news/edit.php?id=<?= $news['id'] ?>">
                                 <i class="bi bi-pencil-square"></i>
                             </a>
                         </td>
