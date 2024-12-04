@@ -81,7 +81,7 @@
             <h1 class="display-4 fw-medium">Chào mừng đến với Trang Tin tức</h1>
             <p class="lead">Cập nhật tin tức mới nhất từ khắp nơi trên thế giới.</p>
             <div class="search-bar mt-4">
-                <form action="../../../index.php?controller=home&action=search" method="POST">
+                <form action="../../index.php?controller=home&action=search" method="POST">
                     <div class="input-group mx-auto" style="max-width: 600px;">
                         <input type="text" class="form-control" placeholder="Tìm kiếm tin tức..." name="query">
                         <button class="btn btn-light" type="submit">Tìm</button>

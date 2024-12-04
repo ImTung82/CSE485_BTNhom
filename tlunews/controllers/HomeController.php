@@ -18,7 +18,7 @@
             if (isset($_POST['query']) && !empty(trim($_POST['query']))) {
                 $query = trim($_POST['query']);
         
-                header('Location: ../views/news/search.php?query=' . urlencode($query));
+                header('Location: views/news/search.php?query=' . urlencode($query));
                 exit();
             } else {
                 header('Location: index.php');
