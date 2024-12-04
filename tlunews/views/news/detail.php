@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once(__DIR__ . '/../../controllers/HomeController.php');
     
     $homeController = new HomeController();
@@ -37,7 +38,28 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="../home/index.php">Trang chủ</a>
+            <a class="navbar-brand" href="index.php">Trang chủ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <?php if (isset($_SESSION['username'])): ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?= $_SESSION['username'] ?>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="userMenu">
+                                <li><a class="dropdown-item" href="../admin/logout.php">Đăng xuất</a></li>
+                            </ul>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../admin/login.php">Đăng nhập</a>
+                        </li>
+                    <?php endif; ?>
+                </ul>
+            </div>
         </div>
     </nav>
 

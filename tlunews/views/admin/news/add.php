@@ -1,5 +1,6 @@
 <?php
-require_once(__DIR__ . '/../../../models/News.php');
+    session_start();
+    require_once(__DIR__ . '/../../../models/News.php');
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +13,34 @@ require_once(__DIR__ . '/../../../models/News.php');
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-    <div class="container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.php">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <?php if (isset($_SESSION['username'])): ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userMenu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <?= $_SESSION['username'] ?>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="userMenu">
+                                <li><a class="dropdown-item" href="../admin/logout.php">Đăng xuất</a></li>
+                            </ul>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../admin/login.php">Đăng nhập</a>
+                        </li>
+                    <?php endif; ?>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
         <h3 class="text-center text-success mb-4">Add News</h3>
 
         <!-- Form để thêm tin tức -->
