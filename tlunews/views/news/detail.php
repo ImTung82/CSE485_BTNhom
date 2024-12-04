@@ -1,18 +1,8 @@
 <?php
-    require_once(__DIR__ . '/../../models/News.php');
+    require_once(__DIR__ . '/../../controllers/HomeController.php');
     
-    // Kiểm tra nếu có ID trong URL
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
-
-        // Tạo đối tượng News và lấy thông tin chi tiết của tin tức
-        $news = new News();
-        $newsDetails = $news->getNewsById($id);
-    } else {
-        // Nếu không có ID, chuyển hướng về trang chủ
-        header('Location: index.php');
-        exit();
-    }
+    $homeController = new HomeController();
+    $newsDetails = $homeController->getDetails()
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +37,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="index.php">Trang chủ</a>
+            <a class="navbar-brand" href="../home/index.php">Trang chủ</a>
         </div>
     </nav>
 

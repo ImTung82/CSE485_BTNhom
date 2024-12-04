@@ -11,12 +11,10 @@
             }
 
             try {
-                // Truy vấn tất cả dữ liệu từ bảng news
                 $sql = "SELECT id, title, content, image, created_at, category_id FROM news";
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
 
-                // Lấy tất cả dữ liệu và trả về
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {
                 throw new Exception("Lỗi khi truy vấn cơ sở dữ liệu: " . $e->getMessage());
@@ -32,13 +30,11 @@
             }
     
             try {
-                // Truy vấn thông tin tin tức theo ID
                 $sql = "SELECT id, title, content, image, created_at, category_id FROM news WHERE id = :id";
                 $stmt = $conn->prepare($sql);
                 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
                 $stmt->execute();
     
-                // Lấy dữ liệu tin tức và trả về
                 return $stmt->fetch(PDO::FETCH_ASSOC);
             } catch (PDOException $e) {
                 throw new Exception("Lỗi khi truy vấn cơ sở dữ liệu: " . $e->getMessage());
@@ -93,7 +89,6 @@
                 throw new Exception("Kết nối cơ sở dữ liệu thất bại.");
             }
         
-            // Cập nhật câu lệnh SQL
             $sql = "UPDATE news SET title = ?, content = ?, created_at = ?, category_id = ?" . 
                    ($image ? ", image = ?" : "") . " WHERE id = ?";
             

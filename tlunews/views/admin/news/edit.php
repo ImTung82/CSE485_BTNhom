@@ -1,8 +1,8 @@
 <?php 
-    require_once __DIR__ . '/../../../controllers/AdminController.php';
+    require_once __DIR__ . '/../../../controllers/NewsController.php';
 
-    $admincontroller = new AdminController();
-    $newsItem = $admincontroller->getEditNews();
+    $newsController = new NewsController();
+    $newsItem = $newsController->getEditNews();
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
         <h3 class="text-center text-success mb-4">Edit News</h3>
 
         <!-- Form chỉnh sửa tin tức -->
-        <form action="../../../index.php?controller=admin&action=update&id=<?= $newsItem['id']; ?>" method="POST" enctype="multipart/form-data">
+        <form action="../../../index.php?controller=news&action=update&id=<?= $newsItem['id']; ?>" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" name="title" value="<?= $newsItem['title']; ?>" required>

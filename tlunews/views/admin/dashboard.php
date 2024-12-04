@@ -48,7 +48,7 @@
                             </a>
                         </td>
                         <td>
-                            <a href="../../index.php?controller=admin&action=delete&id=<?= $news['id']; ?>" 
+                            <a href="../../index.php?controller=news&action=delete&id=<?= $news['id']; ?>" 
                                onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
                                 <i class="bi bi-trash3"></i>
                             </a>
