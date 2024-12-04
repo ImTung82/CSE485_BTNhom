@@ -48,16 +48,14 @@
             include __DIR__ . '/views/admin/news/add.php';
         }
           
-        public function edit() {
+        public function getEditNews() {
             if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
                 $id = $_GET['id'];
                 $news = new News();
-                $newsEdit = $news-> getNewsById($id);
+                $newsEdit = $news->getNewsById($id);
 
-                include __DIR__ . '/views/admin/news/edit.php';
+                return $newsEdit;
             }
-
-
         }
 
         public function delete() {
