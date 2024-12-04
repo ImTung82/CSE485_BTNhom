@@ -47,8 +47,6 @@
             
             include __DIR__ . '/views/admin/news/add.php';
         }
-<<<<<<< Updated upstream
-=======
           
         public function getEditNews() {
             if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
@@ -59,7 +57,6 @@
                 return $newsEdit;
             }
         }
->>>>>>> Stashed changes
 
         public function delete() {
             if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
@@ -73,6 +70,8 @@
             }
             echo "Yêu cầu không hợp lệ.";
         }
+
+
     }
     
 ?>
