@@ -1,44 +1,44 @@
 <?php
-    require_once __DIR__ . '/controllers/AdminController.php';
-    require_once __DIR__ . '/controllers/NewsController.php';
+require_once __DIR__ . '/controllers/AdminController.php';
+require_once __DIR__ . '/controllers/NewsController.php';
+require_once __DIR__ . '/controllers/HomeController.php';
 
-    $controller = $_GET['controller'] ?? 'index';
-    $action = $_GET['action'] ?? 'index';
+$controller = $_GET['controller'] ?? 'index';
+$action = $_GET['action'] ?? 'index';
 
-    if ($controller != null && $action != null) {
-        switch ($controller) {
-            case 'admin':
-                switch ($action) {
-                    case 'index':
-                        $adminController = new AdminController();
-                        $adminController->index();
-                        break; 
-                    case 'login':
-                        $adminController = new AdminController();
-                        $adminController->login();
-                        break;
-                }
-
-            case 'news':
-                switch ($action) {
-                    case 'add':
-                        $newsController = new NewsController();
-                        $newsController->add();
-
-                    case 'update':
-                        $newsController = new NewsController();
-                        $newsController->update();
-                    
-                    case 'delete':
-                        $newsController = new NewsController();
-                        $newsController->delete();
-                        break;
-                }
-            
-            default:
-                $adminController = new AdminController();
+if ($controller && $action) {
+    switch ($controller) {
+        case 'admin':
+            $adminController = new AdminController();
+            if ($action === 'index') {
                 $adminController->index();
-                break;
-        }
+            } elseif ($action === 'login') {
+                $adminController->login();
+            }
+            break;
+
+        case 'news':
+            $newsController = new NewsController();
+            if ($action === 'add') {
+                $newsController->add();
+            } elseif ($action === 'update') {
+                $newsController->update();
+            } elseif ($action === 'delete') {
+                $newsController->delete();
+            }
+            break;
+
+        case 'home':
+            $homeController = new HomeController();
+            if ($action === 'search') {
+                $homeController->search();
+
+            }
+            break;
+
+        default:
+            $adminController = new AdminController();
+            $adminController->index();
+            break;
     }
-?>
+}

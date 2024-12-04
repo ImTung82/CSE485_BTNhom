@@ -5,9 +5,20 @@
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $title = $_POST['title'];
                 $content = $_POST['content'];
-                $image = $_POST['image'] ?? '';
+                
                 $dateCreated = $_POST['dateCreated'] ?? '';
                 $categoryId = $_POST['categoryId'] ?? '';
+
+                $image = '';
+                if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                    $imageTmpPath = $_FILES['image']['tmp_name'];
+                    $imageName = $_FILES['image']['name'];
+                    $imagePath = 'uploads/' . $imageName;
+
+                    if (move_uploaded_file($imageTmpPath, $imagePath)) {
+                        $image = $imagePath;
+                    }
+                }
 
                 $news = new News();
                 $news->addNews($title, $content, $image, $dateCreated, $categoryId);
@@ -34,10 +45,19 @@
                 $id = intval($_GET['id']);
                 $title = trim($_POST['title']);
                 $content = trim($_POST['content']);
-                $image = $_POST['image'] ?? '';
                 $dateCreated = $_POST['dateCreated'];
                 $categoryId = intval($_POST['categoryId']);
-    
+
+                $image = '';
+                if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+                    $imageTmpPath = $_FILES['image']['tmp_name'];
+                    $imageName = $_FILES['image']['name'];
+                    $imagePath = 'uploads/' . $imageName;
+
+                    if (move_uploaded_file($imageTmpPath, $imagePath)) {
+                        $image = $imagePath;
+                    }
+                }
         
                 $news = new News();
                 $updateStatus = $news->updateNews($id, $title, $content, $dateCreated, $categoryId, $image);

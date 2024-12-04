@@ -26,10 +26,14 @@
                         exit();
                     }
                 } else {
+                    session_start();
+                    $_SESSION['error'] = "Sai tài khoản hoặc mật khẩu!";
                     header("Location: views/admin/login.php");
+                    exit();
                 }
             } else {
                 header("Location: views/admin/login.php");
+                exit();
             }
         }
 

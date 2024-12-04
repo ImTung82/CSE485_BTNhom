@@ -12,7 +12,7 @@ class User {
 
         try {
             session_start();
-            // Truy vấn người dùng với username và password
+            
             $sql = "SELECT id, username, role FROM users WHERE username = :username AND password = :password";
             $stmt = $conn->prepare($sql);
             $stmt->bindParam(':username', $username);
@@ -21,19 +21,12 @@ class User {
 
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // Nếu tìm thấy người dùng, kiểm tra vai trò
             if ($user) {
-                // if ($user['role'] == 0) {
-                //     return ['success' => true, 'role' => 0];
-                // } elseif ($user['role'] == 1) {
-                //     return ['success' => true, 'role' => 1];
-                // }
                 $_SESSION['username'] = $user['username'];
-                $_SESSION['role'] = $user['role']; // Lưu vai trò để sử dụng sau này
+                $_SESSION['role'] = $user['role'];
                 return ['success' => true, 'role' => $user['role']];
             }
 
-            // Trả về false nếu thông tin không chính xác
             return ['success' => false, 'role' => null];
 
         } catch (PDOException $e) {
