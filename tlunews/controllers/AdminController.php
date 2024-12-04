@@ -54,19 +54,13 @@
                 $news = new News();
                 $newsEdit = $news->getNewsById($id);
 
-<<<<<<< Updated upstream
                 return $newsEdit;
             }
         }
 
-=======
-                return $newsEdit;            
-            }
-        }
-
         public function update() {
-            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id']) && is_numeric($_POST['id'])) {
-                $id = intval($_POST['id']);
+            if (isset($_GET['id'])) {
+                $id = intval($_GET['id']);
                 $title = trim($_POST['title']);
                 $content = trim($_POST['content']);
                 $image = $_POST['image'] ?? '';
@@ -74,12 +68,11 @@
                 $categoryId = intval($_POST['categoryId']);
     
         
-                // Gọi model để cập nhật dữ liệu
                 $news = new News();
                 $updateStatus = $news->updateNews($id, $title, $content, $dateCreated, $categoryId, $image);
         
                 if ($updateStatus) {
-                    header('Location: /admin/dashboard.php');
+                    header('Location: views/admin/dashboard.php');
                     exit;
                 } else {
                     die('Failed to update news!');
@@ -88,13 +81,7 @@
                 die('Invalid request!');
             }
         }
-    
 
-    
-
-        
-
->>>>>>> Stashed changes
         public function delete() {
             if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['id'])) {
                 $id = $_GET['id'];
