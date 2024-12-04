@@ -32,7 +32,6 @@ if ($controller && $action) {
             $homeController = new HomeController();
             if ($action === 'search') {
                 $homeController->search();
-
             }
             break;
 
